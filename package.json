@@ -2,6 +2,10 @@
   "name": "hw5",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "10.15.3",
+    "npm": "6.9.0"
+  },
   "dependencies": {
     "@mars/heroku-js-runtime-env": "^3.0.2",
     "prop-types": "^15.7.2",

@@ -4,6 +4,7 @@ import { Glyphicon, Panel, ListGroup, ListGroupItem } from 'react-bootstrap'
 import { Image } from 'react-bootstrap'
 import { withRouter } from "react-router-dom";
 import {fetchMovie} from "../actions/movieActions";
+import Review from './review';
 
 //support routing by creating a new component
 
@@ -31,7 +32,7 @@ class Movie extends Component {
                     <Glyphicon glyph={'star'} /> {review.rating}
                 </p>
             );
-        }
+        };
 
         const DetailInfo = ({currentMovie}) => {
             if (!currentMovie) { // evaluates to true if currentMovie is null
@@ -44,9 +45,11 @@ class Movie extends Component {
                     <ListGroup>
                         <ListGroupItem>{currentMovie.title}</ListGroupItem>
                         <ListGroupItem><ActorInfo actors={currentMovie.cast} /></ListGroupItem>
-                        <ListGroupItem><h4><Glyphicon glyph={'star'} /> {currentMovie.average_rating} </h4></ListGroupItem>
+                        <ListGroupItem><h4><Glyphicon glyph={'star'} /> {currentMovie.average_rating ? currentMovie.average_rating : 'Not Rated Yet!'} </h4></ListGroupItem>
                     </ListGroup>
+
                     <Panel.Body><ReviewInfo reviews={currentMovie.reviews} /></Panel.Body>
+                    <Review movie={currentMovie}/>
                 </Panel>
             );
         };
